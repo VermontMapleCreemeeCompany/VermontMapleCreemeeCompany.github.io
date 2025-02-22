@@ -1,4 +1,5 @@
 document.documentElement.style.setProperty('--height', window.innerHeight);
+document.documentElement.style.setProperty('--scroll', document.documentElement.scrollTop);
 
 window.addEventListener('scroll', () => {
   document.documentElement.style.setProperty('--scroll', document.documentElement.scrollTop);
@@ -27,12 +28,34 @@ document.querySelectorAll('.carousel button').forEach((b) => {
   })
 })
 
+document.querySelector('input[type=tel]').addEventListener('input', (e) => {
+	let value = e.target.value;
+	let phoneNumber = value.replace(/\D/g, '');
+
+	if (phoneNumber.length < 4) {
+		return (e.target.value = phoneNumber);
+	} else if (phoneNumber.length < 7) {
+		return (e.target.value = `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`);
+	} else {
+		return (e.target.value = `(${phoneNumber.slice(0,3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`);
+	}
+});
+
 document.querySelector("#catering form").addEventListener('submit', async (e)=> {
   e.preventDefault();
-	let res = await fetch(e.target.action,
+
+  let formData = new FormData(e.target);
+  let jsonData = Object.fromEntries(formData.entries())
+  
+	let res = await fetch("api/mailer",
 	  {
-	    method: e.target.method,
-			body: new FormData(e.target),
+	    method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+			body: JSON.stringify(jsonData),
 		}
 	);
 })
+
+
