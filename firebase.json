@@ -1,6 +1,7 @@
 {
   "hosting": {
     "public": "public",
+    "cleanUrls": true,
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -19,7 +20,6 @@
       "codebase": "default",
       "ignore": [
         "venv",
-        ".env",
         ".git",
         "firebase-debug.log",
         "firebase-debug.*.log",
