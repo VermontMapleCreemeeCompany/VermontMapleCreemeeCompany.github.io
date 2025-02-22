@@ -118,7 +118,6 @@ header {
     height: 5rem;
     --y: calc(-50% + 50svh - var(--scroll, 0) * 1px);
     transform: translateY(max(var(--y), 0px)) scale(max(1.0, calc(1 + (1 - (var(--scroll, 0) / (0.5 * var(--height)))))));
-    transition: transform 0.05s ease-out;
 
     svg {
       height: inherit;
