@@ -3,9 +3,7 @@
     "public": "public",
     "cleanUrls": true,
     "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
+      "**/.*"
     ],
     "rewrites": [
       {
@@ -20,9 +18,9 @@
       "codebase": "default",
       "ignore": [
         "venv",
-        ".git",
         "firebase-debug.log",
         "firebase-debug.*.log",
+        "__pycache__",
         "*.local"
       ]
     }
