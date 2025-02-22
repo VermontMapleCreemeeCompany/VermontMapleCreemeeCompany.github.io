@@ -15,6 +15,7 @@
 html {
   scroll-behavior: smooth;
   font-family: Inter, system-ui, sans-serif;
+  background: var(--color-primary);
 }
 
 body {
@@ -202,6 +203,11 @@ main {
         margin-left: auto;
         text-align: right;
       }
+    }
+
+    a {
+      text-decoration: underline;
+      color: var(--color-primary);
     }
   }
 }
