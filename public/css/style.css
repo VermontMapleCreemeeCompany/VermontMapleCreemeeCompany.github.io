@@ -490,6 +490,7 @@ form {
     font-weight: 700;
 
     &:hover {
+      cursor: pointer;
       background: #1b2b0d;
     }
   }
