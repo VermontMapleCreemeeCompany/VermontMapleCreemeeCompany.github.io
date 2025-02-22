@@ -96,27 +96,27 @@ header {
       text-transform: uppercase;
       letter-spacing: 0.1em;
       font-weight: 700;
-    }
 
-    a::after {
-      content: '';
-      position: absolute;
-      inset: 100% 0 auto 0;
-      height: 3px;
-      background: currentColor;
-      scale: 0 1;
-      transition: scale 0.25s ease-in-out;
-    }
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 100% 0 auto 0;
+        height: 3px;
+        background: currentColor;
+        scale: 0 1;
+        transition: scale 0.25s ease-in-out;
+      }
 
-    a:hover::after {
-      scale: 1 1;
+      &:hover::after {
+        scale: 1 1;
+      }
     }
   }
 
   /* Nav logo */
   .logo {
     height: 5rem;
-    --y: calc(-50% + 50vh - var(--scroll, 0) * 1px);
+    --y: calc(-50% + 50svh - var(--scroll, 0) * 1px);
     transform: translateY(max(var(--y), 0px)) scale(max(1.0, calc(1 + (1 - (var(--scroll, 0) / (0.5 * var(--height)))))));
     transition: transform 0.05s ease-out;
 
