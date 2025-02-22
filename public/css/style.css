@@ -15,7 +15,6 @@
 html {
   scroll-behavior: smooth;
   font-family: Inter, system-ui, sans-serif;
-  background: var(--color-primary);
 }
 
 body {
@@ -61,14 +60,70 @@ header {
   color: var(--color-primary);
   background: var(--color-background);
 
+  /* Nav menu toggle button */
   .nav-toggle {
     display: none;
 
     @media (width < 1000px) {
-      position: relative;
-      z-index: 2;
       display: block;
     }
+
+    z-index: 2;
+    align-self: center;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    color: var(--color-primary);
+
+    span {
+      position: relative;
+      display: block;
+      height: 4px;
+      width: 2rem;
+      background: currentColor;
+      border-radius: 4px;
+      transition: 0.3s;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: inherit;
+        height: inherit;
+        background: inherit;
+        border-radius: inherit;
+        transition: 0.1s;
+      }
+
+      &::before {
+        top: -10px;
+      }
+
+      &::after {
+        bottom: -10px;
+      }
+    }
+
+  }
+
+  /* .nav-toggle styling when the nav is opened */
+  nav.active+.nav-toggle {
+    color: var(--color-background);
+
+    span {
+      transform: rotate(45deg);
+
+      &::before {
+        top: 0;
+      }
+
+      &::after {
+        bottom: 0;
+        transform: rotate(90deg);
+      }
+    }
+
   }
 
   /* Main nav*/
@@ -78,30 +133,38 @@ header {
     gap: 2rem;
 
     @media (width < 1000px) {
-      display: none;
+      transition: opacity 0.2s;
+      opacity: 0;
+      position: fixed;
+      z-index: 2;
+      inset: 0;
+      flex-direction: column;
+      justify-content: center;
+      color: var(--color-background);
+      background: var(--color-primary);
 
       &.active {
-        z-index: 2;
-        inset: 0;
-        position: fixed;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        background: var(--color-background);
+        opacity: 1;
+      }
+
+      a {
+        font-size: 1.5rem;
       }
     }
 
+    /* nav link */
     a {
       position: relative;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       font-weight: 700;
 
+      /* nav link underline */
       &::after {
         content: '';
         position: absolute;
         inset: 100% 0 auto 0;
-        height: 3px;
+        height: 0.15em;
         background: currentColor;
         scale: 0 1;
         transition: scale 0.25s ease-in-out;
@@ -167,7 +230,6 @@ main {
 
     h2 {
       width: fit-content;
-      margin-bottom: 1em;
       padding: 0.5rem 0.5rem 0.5rem 6rem;
       color: var(--color-background);
       background: var(--color-primary);
@@ -175,11 +237,10 @@ main {
       font-size: 1rem;
       font-weight: 700;
       letter-spacing: 0.1em;
-
     }
 
     h3 {
-      margin-bottom: 4rem;
+      margin: 1rem 1rem 2rem 1rem;
       max-width: 12ch;
       font-size: 4rem;
       font-weight: 100;
@@ -188,7 +249,6 @@ main {
 
       @media (width <=600px) {
         font-size: 3rem;
-        margin-bottom: 2em;
       }
     }
 
@@ -506,7 +566,12 @@ footer {
   position: relative;
   margin-top: 4rem;
   padding: 4rem;
+  color: var(--color-background);
   background: var(--color-primary);
+
+  @media (width <=600px) {
+    padding: 2rem;
+  }
 
   .logo {
     width: 10rem;
@@ -543,6 +608,4 @@ footer {
   .address {
     font-size: 0.75rem;
   }
-
-  color: var(--color-background);
 }
