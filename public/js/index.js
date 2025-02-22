@@ -56,6 +56,13 @@ document.querySelector("#catering form").addEventListener('submit', async (e)=> 
 			body: JSON.stringify(jsonData),
 		}
 	);
+
+	if (res.status == 200) {
+	    e.target.reset() // reset form fields
+	    alert("Thanks for reaching out. We will get back to you via email as soon as possible.")
+  } else {
+      alert("Uh Oh! Something went wrong on our end. Please send your inquiry to our email. info@vtmaplecreemee.com")
+  }
 })
 
 
