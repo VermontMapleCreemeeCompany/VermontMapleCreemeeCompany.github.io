@@ -560,6 +560,11 @@ form {
       cursor: pointer;
       background: #1b2b0d;
     }
+
+    &:disabled {
+      opacity: 0.7;
+      cursor: wait;
+    }
   }
 }
 

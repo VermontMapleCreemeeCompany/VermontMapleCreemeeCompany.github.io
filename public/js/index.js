@@ -44,6 +44,9 @@ document.querySelector('input[type=tel]').addEventListener('input', (e) => {
 document.querySelector("#catering form").addEventListener('submit', async (e)=> {
   e.preventDefault();
 
+  let submitButton = e.submitter;
+  submitButton.disabled = true;
+  
   let formData = new FormData(e.target);
   let jsonData = Object.fromEntries(formData.entries())
   
@@ -59,10 +62,12 @@ document.querySelector("#catering form").addEventListener('submit', async (e)=> 
 
 	if (res.status == 200) {
 	    e.target.reset() // reset form fields
-	    alert("Thanks for reaching out. We will get back to you via email as soon as possible.")
+	    alert("Thanks for reaching out. We will get back to you via email as soon as possible.");
   } else {
-      alert("Uh Oh! Something went wrong on our end. Please send your inquiry to our email. info@vtmaplecreemee.com")
+      alert("Uh Oh! Something went wrong on our end. Please send your inquiry to our email. info@vtmaplecreemee.com");
   }
+
+  submitButton.disabled = false;
 })
 
 
