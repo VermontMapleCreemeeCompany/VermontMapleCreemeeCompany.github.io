@@ -31,10 +31,12 @@ def mailer(req: https_fn.Request) -> https_fn.Response:
         "Additional Info": j["details"],
     }
 
+    # Build email message
     msg = EmailMessage()
-    msg["Subject"] = f"Catering Inquiry from {j['name']}"
+    msg["Subject"] = f"Catering Inquiry from {info['Name']}"
     msg["From"] = EMAIL
     msg["To"] = EMAIL
+    msg['Reply-To'] = info['Email']
 
     table_rows = "".join(
         [f"<tr><td>{k}</td><td>{v}</td></tr>" for k, v in info.items()]
