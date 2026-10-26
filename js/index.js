@@ -1,11 +1,3 @@
-document.documentElement.style.setProperty('--height', window.innerHeight);
-document.documentElement.style.setProperty('--scroll', document.documentElement.scrollTop);
-
-window.addEventListener('scroll', () => {
-  document.documentElement.style.setProperty('--scroll', document.documentElement.scrollTop);
-}, false);
-
-
 document.querySelector('.nav-toggle').addEventListener('click', () => {
   document.querySelector('.bar nav').classList.toggle("active");
 })
